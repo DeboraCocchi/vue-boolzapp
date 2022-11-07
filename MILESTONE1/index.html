@@ -8,6 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/vue@3"></script>
   <link rel="stylesheet" href="css/style.css">
   <title>BoolzApp</title>
 </head>
@@ -44,29 +45,30 @@
         </div>
         <ul class="my-contacts">
 
-          <li class="contact">
+          <li class="contact" v-for="(contact, index) in contacts" :class="{'active': contact.visible}">
             <div class="circle">
-              <img src="img/avatar_1.jpg" alt="">
+              <img :src="'img/avatar'+ contact.avatar +'.jpg'" alt="">
             </div>
             <div class="contact-info">
-              <h4 class="contact-name">Michele</h4>
-              <p class="last-msg">Ultimo messaggio inviato</p>
+              <h4 class="contact-name">{{contact.name}}</h4>
+              <p class="last-msg" v-if="contact.messages[contact.messages.length-1].status ==='received'">{{contact.messages[contact.messages.length-1].message}}</p>
+              <p class="last-msg" v-else>Tu: {{contact.messages[contact.messages.length-1].message}}</p>
             </div>
-            <span class="time">12:00</span>
+            <span class="time">{{contact.messages[contact.messages.length-1].date}}   {{contact.messages[contact.messages.length-1].hour}}</span>
           </li>
         </ul>
       </div>
 
 
-      <div class="chat-col">
+      <div class="chat-col" v-for="(contact, index) in contacts" v-show="contact.visible">
         <div class="top-chat-row">
           <div class="left-stuff">
             <div class="circle">
-              <img src="img/avatar_1.jpg" alt="">
+              <img v-show="contact.visible" :src="'img/avatar'+ contact.avatar +'.jpg'" alt="contact.name">
             </div>
             <div class="contact-info">
-              <h4 class="contact-name">Michele</h4>
-              <p class="last-access">Ultimo accesso oggi alle 12:00</p>
+              <h4 class="contact-name">{{contact.name}}</h4>
+              <p class="last-access">Ultimo accesso {{contact.lastAccess}}</p>
             </div>
           </div>
           <div class="right-stuff">
@@ -75,18 +77,10 @@
             <i class="fa-solid fa-ellipsis-vertical"></i>
           </div>
         </div>
-        <div class="center-chat-bg">
-          <div class="message sent">Ciao sono un messaggio inviato
-            <span class="msg-hour">12:50</span>
-          </div>
-          <div class="message sent">Ciao sono un altro messaggio inviato
-            <span class="msg-hour">12:50</span>
-          </div>
-          <div class="message received">Ciao sono un messaggio ricevuto
-            <span class="msg-hour">12:51</span>
-          </div>
-          <div class="message sent">Ok ciao
-            <span class="msg-hour">12:51</span>
+
+        <div class="center-chat-bg" v-show="contact.visible">
+          <div v-for="message in contact.messages" class="message" :class="{'sent':message.status==='sent', 'received':message.status==='received'}">{{message.message}}
+            <span class="msg-hour">{{message.hour}}</span>
           </div>
         </div>
         <div class="bottom-chat-row">

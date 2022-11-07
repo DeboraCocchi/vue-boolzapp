@@ -118,6 +118,7 @@ main{
   align-items: center;
   justify-content: center;
   padding:10px;
+  background-color: var(--mygrey);
 }
 
 .search-field span{
@@ -215,7 +216,7 @@ li .circle{
 
 .center-chat-bg{
   height: calc(100% - 100px);
-  padding:25px 45px 0;
+  padding:25px 65px 0;
   overflow-y: auto;
   background-image: url('../img/mine.jpg');
   background-repeat: repeat;
