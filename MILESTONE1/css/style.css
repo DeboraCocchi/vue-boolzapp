@@ -1,0 +1,174 @@
+*{
+  padding:0;
+  margin:0;
+  box-sizing: border-box;
+  font-family: 'Lato', sans-serif;
+}
+
+:root{
+  --mygreen: rgb(24,134,116);
+  --mydarkgrey: rgb(211,211,199);
+  --mylightgrey:rgb(229,229,229);
+  --mygrey:rgb(162,162,162);
+  --mydarkergrey:rgb(115, 114, 114);
+  --mybeige: rgb(240,233,229);
+  --mylightblue: rgb(129,209,253);
+}
+
+main{
+  width:100%;
+  height:100vh;
+  display:flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.thin-line{
+  height:20vh;
+  width:100%;
+  background-color: var(--mygreen);
+  position: absolute;
+  top:0;
+  left:0;
+  z-index: -1;
+}
+
+.large-line{
+  height:80vh;
+  width:100%;
+  background-color: var(--mydarkgrey);
+  position: absolute;
+  bottom:0;
+  left:0;
+  z-index: -1;
+}
+
+.main-wrapper{
+  display:flex;
+  width:80%;
+  height:90vh;
+  background-color: var(--mylightgrey);
+  margin:0 auto;
+}
+
+.contact-col{
+  height:100%;
+  width:35%;
+  border:1px solid black;
+}
+
+.chat-col{
+  height:100%;
+  width:65%;
+}
+
+.main-user{
+  height:50px;
+  width:100%;
+  padding:15px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.profile{
+ display: flex;
+ align-items: center;
+}
+
+.profile img{
+  width:35px;
+  height:35px;
+  object-fit: cover;
+  max-width: 100%;
+  border-radius: 50%;
+}
+.profile span{
+ margin-left:10px;
+ font-size:90%;
+}
+
+.user-tools i{
+  color: var(--mydarkergrey);
+  font-size:90%;
+  margin-left:8px;
+}
+
+.user-tools i:hover{
+  cursor:pointer;
+}
+
+.lightblue-msg{
+  display:flex;
+  align-items: center;
+  background-color: var(--mylightblue);
+  height:55px;
+  padding:15px;
+
+}
+
+.lightblue-msg .circle{
+  width:35px;
+  height:35px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(255,255,255,0.8);
+  color:var(--mylightblue);
+  font-size: 80%;
+}
+
+.notifications{
+  margin-left:10px;
+  font-size: 70%;
+}
+
+.notifications a{
+  color: var(--mydarkergrey);
+  font-size: 90%;;
+}
+
+.search-field{
+  height:50px;
+  width:100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding:10px;
+}
+
+.search-field span{
+  font-size: 80%;
+  padding:8px 15px;
+  background-color: white;
+  color: var(--mydarkergrey);
+  height:30px;
+}
+
+.search-field input{
+  outline:none;
+  border:none;
+  width:90%;
+  height:30px;
+  padding:8px;
+}
+
+.search-field input:focus{
+  outline:1px solid var(--mydarkgrey);
+}
+
+ul{
+  background-color: white;
+  height: calc(100% - (50px + 55px + 50px));
+  overflow-y: auto;
+}
+
+li{
+  height:50px;
+}
+
+li.active{
+  background-color: var(--mylightgrey) ;
+}
+
