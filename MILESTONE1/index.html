@@ -12,8 +12,7 @@
   <title>BoolzApp</title>
 </head>
 <body>
-  <div class="thin-line"></div>
-  <div class="large-line"></div>
+ 
   <main>
 
     <div class="main-wrapper" id="app">
@@ -44,11 +43,46 @@
           <input type="text">
         </div>
         <ul class="my-contacts">
-          <li class="contact"></li>
+
+          <li class="contact">
+            <div class="circle">
+              <img src="img/avatar_1.jpg" alt="">
+            </div>
+            <div class="contact-info">
+              <h4 class="contact-name">Michele</h4>
+              <p class="last-msg">Ultimo messaggio inviato</p>
+            </div>
+            <span class="time">12:00</span>
+          </li>
         </ul>
       </div>
-      <div class="chat-col"></div>
-    </div>
+
+
+      <div class="chat-col">
+        <div class="top-chat-row">
+          <div class="left-stuff">
+            <div class="circle">
+              <img src="img/avatar_1.jpg" alt="">
+            </div>
+            <div class="contact-info">
+              <h4 class="contact-name">Michele</h4>
+              <p class="last-access">Ultimo accesso oggi alle 12:00</p>
+            </div>
+          </div>
+          <div class="right-stuff">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <i class="fa-solid fa-paperclip"></i>
+            <i class="fa-solid fa-ellipsis-vertical"></i>
+          </div>
+        </div>
+        <div class="center-chat-bg"></div>
+        <div class="bottom-chat-row">
+          <span class="emoticons"><i class="fa-regular fa-face-smile"></i></span>
+          <input type="text" placeholder="Scrivi un messaggio...">
+          <span class="mic"><i class="fa-solid fa-microphone"></i></span>
+
+        </div>
+      </div>
 
   </main> 
 

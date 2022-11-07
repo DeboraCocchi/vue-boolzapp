@@ -21,26 +21,7 @@ main{
   display:flex;
   align-items: center;
   justify-content: center;
-}
-
-.thin-line{
-  height:20vh;
-  width:100%;
-  background-color: var(--mygreen);
-  position: absolute;
-  top:0;
-  left:0;
-  z-index: -1;
-}
-
-.large-line{
-  height:80vh;
-  width:100%;
-  background-color: var(--mydarkgrey);
-  position: absolute;
-  bottom:0;
-  left:0;
-  z-index: -1;
+  background: linear-gradient(to bottom, var(--mygreen) 0%, var(--mygreen) 20%, var(--mydarkgrey) 20% , var(--mydarkgrey) 100% );
 }
 
 .main-wrapper{
@@ -54,7 +35,6 @@ main{
 .contact-col{
   height:100%;
   width:35%;
-  border:1px solid black;
 }
 
 .chat-col{
@@ -69,6 +49,7 @@ main{
   display: flex;
   align-items: center;
   justify-content: space-between;
+  border-right: 1px solid var(--mygrey);
 }
 
 .profile{
@@ -88,13 +69,13 @@ main{
  font-size:90%;
 }
 
-.user-tools i{
+.user-tools i, .right-stuff i{
   color: var(--mydarkergrey);
   font-size:90%;
   margin-left:8px;
 }
 
-.user-tools i:hover{
+.user-tools i:hover , .right-stuff i:hover, .bottom-chat-row i{
   cursor:pointer;
 }
 
@@ -144,14 +125,18 @@ main{
   background-color: white;
   color: var(--mydarkergrey);
   height:30px;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
 }
 
 .search-field input{
   outline:none;
   border:none;
-  width:90%;
+  width:100%;
   height:30px;
   padding:8px;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
 }
 
 .search-field input:focus{
@@ -164,11 +149,97 @@ ul{
   overflow-y: auto;
 }
 
-li{
-  height:50px;
+li.contact{
+  height:55px;
+  display: flex;
+  align-items: center;
+  padding:15px;
+  position: relative;
+  border-bottom: 1px solid var(--mylightgrey);
 }
 
 li.active{
   background-color: var(--mylightgrey) ;
 }
 
+li .circle{
+  width:35px;
+  height:35px;
+  border-radius: 50%;
+  background-color: pink;
+}
+
+.circle>img{
+  object-fit: cover;
+  height:35px;
+  width:35px;
+  max-width: 100%;
+  border-radius: 50%;;
+}
+
+.contact-info{
+  margin-left:15px;
+}
+
+.contact-info h4{
+  font-weight: 400;
+}
+
+.contact-info p{
+  font-size:80%;
+  color: var(--mygrey);
+}
+
+.contact .time{
+  position: absolute;
+  padding:10px;
+  color: var(--mygrey);
+  top:0;
+  right:0;
+  font-size:70%;
+}
+
+.top-chat-row, .bottom-chat-row{
+  height:50px;
+  padding:15px;
+  width:100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.left-stuff{
+  display: flex;
+}
+
+.center-chat-bg{
+  height: calc(100% - 100px);
+  overflow-y: auto;
+  background-image: url('../img/mine.jpg');
+  background-repeat: repeat;
+}
+
+.bottom-chat-row{
+  background-color: var(--mybeige);
+  padding:10px 15px;
+}
+
+.bottom-chat-row span{
+  width:5%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  height:100%;
+ font-size:110%;
+ color:var(--mydarkergrey)
+}
+
+.bottom-chat-row input{
+  width:85%;
+  height:30px;
+  border-radius: 5px;
+  padding:8px;
+  outline:none;
+  border:none;
+}
