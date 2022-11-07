@@ -45,7 +45,7 @@
         </div>
         <ul class="my-contacts">
 
-          <li class="contact" v-for="(contact, index) in contacts" :class="{'active': contact.visible}">
+          <li @click="activeChat(index)" class="contact" v-for="(contact, index) in contacts" :class="{'active': contact.visible}">
             <div class="circle">
               <img :src="'img/avatar'+ contact.avatar +'.jpg'" alt="">
             </div>

@@ -3,6 +3,7 @@ const {createApp} = Vue;
 createApp ({
   data(){
     return{
+      isActive:'',
       contacts:[
         {
           name: 'Michele',
@@ -118,7 +119,7 @@ createApp ({
               date:'05/11/2022',
               hour: '16:20',
               message:'Ciao Luigi, la macchina è pronta?',
-              status:'received'
+              status:'sent'
             },
             {
               date:'05/11/2022',
@@ -210,6 +211,13 @@ createApp ({
     }
   },
   methods:{
-
+    activeChat(index){
+      this.isActive='';
+      this.contacts.forEach(contact => {
+       contact.visible = false;
+      });
+      this.isActive=this.contacts[index];
+      this.contacts[index].visible = true;
+    }
   }
 }).mount('#app')
