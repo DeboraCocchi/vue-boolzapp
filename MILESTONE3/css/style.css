@@ -171,6 +171,13 @@ li .circle{
   background-color: pink;
 }
 
+.last-msg{
+  white-space: nowrap;
+  max-width:185px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
 .circle>img{
   object-fit: cover;
   height:35px;
