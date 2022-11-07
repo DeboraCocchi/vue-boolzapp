@@ -229,6 +229,11 @@ li .circle{
   background-repeat: repeat;
   display: flex;
   flex-direction: column;
+  scroll-snap-type: y proximity;
+}
+
+.center-chat-bg .message:last-child{
+  scroll-snap-align: end;
 }
 
 .bottom-chat-row{
@@ -257,13 +262,13 @@ li .circle{
 }
 
 .message{
-  width: 250px;
+  width: 300px;
   min-height:50px;
   border-radius: 10px;
   position: relative;
-  padding: 10px;
+  padding: 15px;
   font-weight: 300;
-  margin: 5px 0;
+  margin: 10px 0;
 }
 
 .sent{

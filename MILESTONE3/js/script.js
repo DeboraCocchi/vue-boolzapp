@@ -207,6 +207,13 @@ createApp ({
           ]
         },
       ],
+      replies:[
+        `Ti chiamo tra un minuto per palarne!`,
+        `Ciao!`,
+        `Scusa non posso rispondere`,
+        `Ok`,
+        `A presto!`
+      ],
       isActive:'',
       actualDate:'',
       actualTime:'',
@@ -249,9 +256,25 @@ createApp ({
           message:this.myMessage,
           status:'sent'
       }
+      this.autoReply();
       this.isActive.messages.push(newMessage);
       this.myMessage='';
+    },
+    autoReply(){
+      const reply  = setTimeout( () => {
+        const rdmN=Math.floor(Math.random()*4);
+        console.log(rdmN);
+        const newMessage = {
+          date:this.actualDate,
+          hour: this.actualTime,
+          message:this.replies[rdmN],
+          status:'received'
+        };
+        this.isActive.messages.push(newMessage);
+        this.myMessage='';        
+      }, 1000 )
     }
+  
   },
   mounted(){
     this.isActive=this.contacts[0];
