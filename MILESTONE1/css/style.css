@@ -13,6 +13,7 @@
   --mydarkergrey:rgb(115, 114, 114);
   --mybeige: rgb(240,233,229);
   --mylightblue: rgb(129,209,253);
+  --mymsgsent: rgb(206,251,168);
 }
 
 main{
@@ -214,9 +215,12 @@ li .circle{
 
 .center-chat-bg{
   height: calc(100% - 100px);
+  padding:25px 45px 0;
   overflow-y: auto;
   background-image: url('../img/mine.jpg');
   background-repeat: repeat;
+  display: flex;
+  flex-direction: column;
 }
 
 .bottom-chat-row{
@@ -242,4 +246,32 @@ li .circle{
   padding:8px;
   outline:none;
   border:none;
+}
+
+.message{
+  width: 250px;
+  min-height:50px;
+  border-radius: 10px;
+  position: relative;
+  padding: 10px;
+  font-weight: 300;
+  margin: 5px 0;
+}
+
+.sent{
+  background-color: var(--mymsgsent);
+  align-self:end;
+}
+
+.received{
+  background-color: white;
+  align-self:start;
+}
+
+.msg-hour{
+  position: absolute;
+  bottom: 5px;
+  right:8px;
+  font-size:60%;
+  color: var(--mydarkgrey);
 }
