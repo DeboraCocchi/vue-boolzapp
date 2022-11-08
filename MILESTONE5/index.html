@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/vue@3"></script>
+  <link rel="stylesheet" href="css/style.css">
+  <title>BoolzApp</title>
+</head>
+<body>
+ 
+  <main>
+
+    <div class="main-wrapper" id="app">
+      <div class="contact-col">
+        <div class="main-user">
+          <div class="profile">
+            <img src="img/avatar_io.jpg" alt="">
+            <span>Sofia</span>
+          </div>
+          <div class="user-tools">
+            <i class="fa-solid fa-circle-notch"></i>
+            <i class="fa-solid fa-message"></i>
+            <i class="fa-solid fa-ellipsis-vertical"></i>
+          </div>
+        </div>
+        <div class="lightblue-msg">
+          <div class="circle">
+            <i class="fa-solid fa-bell-slash"></i>
+          </div>
+          <div class="notifications">
+            <p>Ricevi notifiche di nuovi messaggi</p><a href="#">Attiva notifiche desktop</a>
+          </div>
+        </div>
+        <div class="search-field">
+          <span class="magn-glass">
+            <i class="fa-solid fa-magnifying-glass"></i>
+          </span>
+          <input type="search" v-model="search">
+        </div>
+        <ul class="my-contacts">
+
+          <li @click="activeChat(index)" class="contact" v-for="(contact, index) in contacts" :class="{'active': contact.visible}"
+          v-show="contact.name.toLowerCase().includes(search.toLowerCase())"
+          >
+            <div class="circle">
+              <img :src="'img/avatar'+ contact.avatar +'.jpg'" alt="contact.name">
+            </div>
+            <div class="contact-info">
+              <h4 class="contact-name">{{contact.name}}</h4>
+              <p class="last-msg" v-if="contact.messages[contact.messages.length-1].status ==='received'">{{contact.messages[contact.messages.length-1].message}}</p>
+              <p class="last-msg" v-else>Tu: {{contact.messages[contact.messages.length-1].message}}</p>
+            </div>
+            <span class="time">{{contact.messages[contact.messages.length-1].date}}   {{contact.messages[contact.messages.length-1].hour}}</span>
+          </li>
+        </ul>
+      </div>
+
+
+      <div class="chat-col" v-for="(contact, index) in contacts" v-show="contact.visible">
+        <div class="top-chat-row">
+          <div class="left-stuff">
+            <div class="circle">
+              <img v-show="contact.visible" :src="'img/avatar'+ contact.avatar +'.jpg'" alt="contact.name">
+            </div>
+            <div class="contact-info">
+              <h4 class="contact-name">{{contact.name}}</h4>
+              <p class="last-access">Ultimo accesso {{contact.lastAccess}}</p>
+            </div>
+          </div>
+          <div class="right-stuff">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <i class="fa-solid fa-paperclip"></i>
+            <i class="fa-solid fa-ellipsis-vertical"></i>
+          </div>
+        </div>
+
+        <div class="center-chat-bg" v-show="contact.visible">
+          <div v-for="message in contact.messages" class="message" :class="{'sent':message.status==='sent', 'received':message.status==='received'}">{{message.message}}
+            <span class="msg-hour">{{message.hour}}</span>
+          </div>
+        </div>
+        <div class="bottom-chat-row">
+          <span class="emoticons"><i class="fa-regular fa-face-smile"></i></span>
+          <input type="text" placeholder="Scrivi un messaggio..." v-model="myMessage" @keyup.enter="createNewMsg()">
+          <span class="mic"><i class="fa-solid fa-microphone"></i></span>
+
+        </div>
+      </div>
+
+  </main> 
+
+  <script src="js/script.js"></script>
+</body>
+</html>
