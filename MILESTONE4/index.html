@@ -45,7 +45,9 @@
         </div>
         <ul class="my-contacts">
 
-          <li @click="activeChat(index)" class="contact" v-for="(contact, index) in contacts" :class="{'active': contact.visible}" v-if="searchAsYouType(search)">
+          <li @click="activeChat(index)" class="contact" v-for="(contact, index) in contacts" :class="{'active': contact.visible}"
+          v-show="contact.name.toLowerCase().includes(search.toLowerCase())"
+          >
             <div class="circle">
               <img :src="'img/avatar'+ contact.avatar +'.jpg'" alt="contact.name">
             </div>

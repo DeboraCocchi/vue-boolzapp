@@ -34,6 +34,10 @@ main{
   margin:0 auto;
 }
 
+.d-none{
+  display:none;
+}
+
 .contact-col{
   height:100%;
   width:35%;

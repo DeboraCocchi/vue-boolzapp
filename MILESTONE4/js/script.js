@@ -1,12 +1,13 @@
 const {createApp} = Vue;
 
-createApp ({
+const app = createApp ({
   data(){
     return{
       contacts:[
         {
           name: 'Michele',
           avatar: '_1',
+          contained: false,
           visible: true,
           lastAccess : 'oggi alle 12:00',
           messages:[
@@ -34,6 +35,7 @@ createApp ({
           name: 'Gianluca',
           avatar: '_2',
           visible: false,
+          contained: false,
           lastAccess : 'oggi alle 16:00',
           messages:[
             {
@@ -60,6 +62,7 @@ createApp ({
           name: 'Alessandro VET',
           avatar: '_3',
           visible: false,
+          contained: false,
           lastAccess : 'ieri alle 11:00',
           messages:[
             {
@@ -86,6 +89,7 @@ createApp ({
           name: 'Francesco',
           avatar: '_4',
           visible: false,
+          contained: false,
           lastAccess : 'oggi alle 17:00',
           messages:[
             {
@@ -112,6 +116,7 @@ createApp ({
           name: 'Luigi Meccanico',
           avatar: '_5',
           visible: false,
+          contained: false,
           lastAccess : 'ieri alle 08:00',
           messages:[
             {
@@ -132,6 +137,7 @@ createApp ({
           name: 'Serena',
           avatar: '_6',
           visible: false,
+          contained: false,
           lastAccess : 'oggi alle 09:18',
           messages:[
             {
@@ -158,6 +164,7 @@ createApp ({
           name: 'Samuele',
           avatar: '_7',
           visible: false,
+          contained: false,
           lastAccess : 'domenica alle 20:12',
           messages:[
             {
@@ -184,6 +191,7 @@ createApp ({
           name: 'Lino',
           avatar: '_8',
           visible: false,
+          contained: false,
           lastAccess : 'oggi alle 15:46',
           messages:[
             {
@@ -219,6 +227,7 @@ createApp ({
       actualTime:'',
       myMessage: '',
       search:'',
+      filtered:[]
     }
   },
   methods:{
@@ -275,14 +284,11 @@ createApp ({
         this.myMessage='';        
       }, 1000 )
     },
-    searchAsYouType(string){
-      if(!string){return this.contacts}
-      const filtered = this.contacts.filter( contact => {
-      console.log(string);
-      return contact.name.includes(string);
-    });
-  },
   mounted(){
+    console.log(this.contacts[0]);
     this.isActive=this.contacts[0];
   }
-}}).mount('#app')
+}}).mount('#app');
+
+
+app.isActive = app.contacts[0];
