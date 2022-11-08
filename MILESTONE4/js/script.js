@@ -11,19 +11,19 @@ createApp ({
           lastAccess : 'oggi alle 12:00',
           messages:[
             {
-              date:'03/11/2022',
+              date:'07/11/2022',
               hour: '12:40',
               message:'Ciao Michele come stai?',
               status:'sent'
             },
             {
-              date:'03/11/2022',
+              date:'07/11/2022',
               hour: '12:41',
               message:'Ti saluta Chiara, è qui con me',
               status:'sent'
             },
             {
-              date:'03/11/2022',
+              date:'07/11/2022',
               hour: '12:43',
               message:'Ciao, tutto bene. Ricambia',
               status:'received'
@@ -37,19 +37,19 @@ createApp ({
           lastAccess : 'oggi alle 16:00',
           messages:[
             {
-              date:'04/11/2022',
+              date:'07/11/2022',
               hour: '11:20',
               message:'Ciao tutto bene?',
               status:'received'
             },
             {
-              date:'04/11/2022',
+              date:'07/11/2022',
               hour: '11:20',
               message:'Hai già finito il progetto in Vuejs?',
               status:'received'
             },
             {
-              date:'04/11/2022',
+              date:'07/11/2022',
               hour: '11:53',
               message:'Ciao, no non ancora',
               status:'sent'
@@ -63,19 +63,19 @@ createApp ({
           lastAccess : 'ieri alle 11:00',
           messages:[
             {
-              date:'04/11/2022',
+              date:'05/11/2022',
               hour:'15:20',
               message:'Alessandro sei riuscito a visitare Paco?',
               status:'sent'
             },
             {
-              date:'04/11/2022',
+              date:'05/11/2022',
               hour: '15:30',
               message:'Ciao Sofia, sì l\'ho visitato e ora sta meglio',
               status:'received'
             },
             {
-              date:'04/11/2022',
+              date:'05/11/2022',
               hour: '15:33',
               message:'Meno male, tra poco passo a prenderlo!',
               status:'sent'
@@ -89,19 +89,19 @@ createApp ({
           lastAccess : 'oggi alle 17:00',
           messages:[
             {
-              date:'05/11/2022',
+              date:'04/11/2022',
               hour: '13:20',
               message:'Ciao Sofia come stai?',
               status:'received'
             },
             {
-              date:'05/11/2022',
+              date:'04/11/2022',
               hour: '13:23',
               message:'Come sta Paco?',
               status:'received'
             },
             {
-              date:'05/11/2022',
+              date:'04/11/2022',
               hour: '13:56',
               message:'Ciao, fortunatamente meglio, grazie',
               status:'sent'
@@ -115,13 +115,13 @@ createApp ({
           lastAccess : 'ieri alle 08:00',
           messages:[
             {
-              date:'05/11/2022',
+              date:'03/11/2022',
               hour: '16:20',
               message:'Ciao Luigi, la macchina è pronta?',
               status:'sent'
             },
             {
-              date:'05/11/2022',
+              date:'03/11/2022',
               hour: '17:00',
               message:'Ciao, sì ho finito',
               status:'received'
@@ -135,19 +135,19 @@ createApp ({
           lastAccess : 'oggi alle 09:18',
           messages:[
             {
-              date:'06/11/2022',
-              hour: '16:20',
+              date:'02/11/2022',
+              hour: '16:24',
               message:'Ciao, ci troviamo per una bevuta stasera verso le 19?',
               status:'sent'
             },
             {
-              date:'06/11/2022',
+              date:'02/11/2022',
               hour: '17:45',
               message:'Ciao, sì certo. Ci troviamo allo Zibaldone?',
               status:'received'
             },
             {
-              date:'06/11/2022',
+              date:'02/11/2022',
               hour: '18:10',
               message:'Perfetto! A tra poco!',
               status:'sent'
@@ -161,20 +161,20 @@ createApp ({
           lastAccess : 'domenica alle 20:12',
           messages:[
             {
-              date:'06/11/2022',
-              hour: '19:40',
+              date:'02/11/2022',
+              hour: '12:40',
               message:'Ciao Samu ci sei per un aperitivo stasera?',
               status:'sent'
             },
             {
-              date:'06/11/2022',
-              hour: '17:40',
+              date:'02/11/2022',
+              hour: '12:40',
               message:'Siamo io e Serena',
               status:'sent'
             },
             {
-              date:'06/11/2022',
-              hour: '18:30',
+              date:'02/11/2022',
+              hour: '15:30',
               message:'Non riesco stasera!',
               status:'received'
             },
@@ -187,19 +187,19 @@ createApp ({
           lastAccess : 'oggi alle 15:46',
           messages:[
             {
-              date:'07/11/2022',
+              date:'31/10/2022',
               hour: '14:40',
               message:'Ciao Lino',
               status:'sent'
             },
             {
-              date:'07/11/2022',
+              date:'31/10/2022',
               hour: '14:42',
               message:'Cosa ne dici dell\'esercizio di oggi?',
               status:'sent'
             },
             {
-              date:'07/11/2022',
+              date:'31/10/2022',
               hour: '14:49',
               message:'Non so da dove iniziare!',
               status:'received'
