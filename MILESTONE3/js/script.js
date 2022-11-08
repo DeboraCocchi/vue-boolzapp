@@ -246,10 +246,8 @@ createApp ({
     },
     createNewMsg(){
       if(this.myMessage.length<1)return;
+      console.log(this);
       this.getDate();
-      console.log(this.actualDate);
-      console.log(this.actualTime);
-      console.log(this.myMessage);
       console.log(this.isActive);
       const newMessage = {
           date:this.actualDate,
@@ -282,7 +280,7 @@ createApp ({
       return contact.name.includes(string);
     });
   },
-  mounted(){
+  created(){
     this.isActive=this.contacts[0];
   }
 }}).mount('#app')
