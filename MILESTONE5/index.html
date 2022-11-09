@@ -34,7 +34,7 @@
           <div class="circle">
             <i class="fa-solid fa-bell-slash"></i>
           </div>
-          <div class="notifications">
+          <div class="notifications priority-3">
             <p>Ricevi notifiche di nuovi messaggi</p><a href="#">Attiva notifiche desktop</a>
           </div>
         </div>
@@ -47,17 +47,17 @@
         <ul class="my-contacts">
 
           <li @click="activeChat(index)" class="contact" v-for="(contact, index) in contacts" :class="{'active': contact.visible}"
-          v-show="contact.name.toLowerCase().includes(search.toLowerCase())"
-          >
+          v-show="contact.name.toLowerCase().includes(search.toLowerCase())">
             <div class="circle">
-              <img :src="'img/avatar'+ contact.avatar +'.jpg'" alt="contact.name">
+              <img :src="'img/avatar'+ contact.avatar +'.jpg'" alt="contact.name" class="priority-1">
             </div>
             <div class="contact-info">
-              <h4 class="contact-name">{{contact.name}}</h4>
-              <p class="last-msg" v-if="contact.messages[contact.messages.length-1].status ==='received'">{{contact.messages[contact.messages.length-1].message}}</p>
-              <p class="last-msg" v-else>Tu: {{contact.messages[contact.messages.length-1].message}}</p>
+              <h4 class="contact-name priority-2">{{contact.name}}</h4>
+              <p class="last-msg priority-2" v-if="contact.messages[contact.messages.length-1].status ==='received'">{{contact.messages[contact.messages.length-1].message}}</p>
+              <p class="last-msg priority-2" v-else>Tu: {{contact.messages[contact.messages.length-1].message}}</p>
             </div>
-            <span class="time">{{contact.messages[contact.messages.length-1].date}}   {{contact.messages[contact.messages.length-1].hour}}</span>
+            <span class="time priority-3">{{contact.messages[contact.messages.length-1].date}}</span>
+            <span class="time priority-4">{{contact.messages[contact.messages.length-1].hour}}</span>
           </li>
         </ul>
       </div>
@@ -71,7 +71,7 @@
             </div>
             <div class="contact-info">
               <h4 class="contact-name">{{contact.name}}</h4>
-              <p class="last-access">Ultimo accesso {{getLastAccessDate(contact,index)}} alle {{getLastAccessTime(contact,index)}}</p>
+              <p class="last-access priority-3">Ultimo accesso {{getLastAccessDate(contact,index)}} alle {{getLastAccessTime(contact,index)}}</p>
             </div>
           </div>
           <div class="right-stuff">

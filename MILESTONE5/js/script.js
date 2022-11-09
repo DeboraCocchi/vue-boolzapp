@@ -2,8 +2,9 @@
 - (milestone5): possibilità di cancellare il msg;
 - verifica che il messaggio da inviare contenga 1+ caratteri (no msg vuoti);
 - ricezione msg random dal bot;
-- scroll-y-proximity per visualizzare sempre l'ultimo msg della conversazione
-- differenziazione stringa ultimo accesso a seconda del tempo trascorso
+- scroll-y-proximity per visualizzare sempre l'ultimo msg della conversazione;
+- differenziazione stringa ultimo accesso a seconda del tempo trascorso;
+- design full-responsive; 
 */
 
 const DateTime=luxon.DateTime;
@@ -24,7 +25,6 @@ const app = createApp ({
           name: 'Michele',
           avatar: '_1',
           visible: true,
-          lastAccess : `${DateTime.now().setLocale('it').toRelativeCalendar()} alle `,
           messages:[
             {
               date:'07/11/2022',
@@ -53,7 +53,6 @@ const app = createApp ({
           name: 'Gianluca',
           avatar: '_2',
           visible: false,
-          lastAccess : 'oggi alle 16:00',
           messages:[
             {
               date:'06/11/2022',
@@ -82,7 +81,6 @@ const app = createApp ({
           name: 'Alessandro VET',
           avatar: '_3',
           visible: false,
-          lastAccess : 'ieri alle 11:00',
           messages:[
             {
               date:'05/11/2022',
@@ -111,7 +109,6 @@ const app = createApp ({
           name: 'Francesco',
           avatar: '_4',
           visible: false,
-          lastAccess : 'oggi alle 17:00',
           messages:[
             {
               date:'05/11/2022',
@@ -140,7 +137,6 @@ const app = createApp ({
           name: 'Luigi Meccanico',
           avatar: '_5',
           visible: false,
-          lastAccess : 'ieri alle 08:00',
           messages:[
             {
               date:'04/11/2022',
@@ -162,7 +158,6 @@ const app = createApp ({
           name: 'Serena',
           avatar: '_6',
           visible: false,
-          lastAccess : 'oggi alle 09:18',
           messages:[
             {
               date:'03/11/2022',
@@ -191,7 +186,6 @@ const app = createApp ({
           name: 'Samuele',
           avatar: '_7',
           visible: false,
-          lastAccess : 'domenica alle 20:12',
           messages:[
             {
               date:'03/11/2022',
@@ -220,7 +214,6 @@ const app = createApp ({
           name: 'Lino',
           avatar: '_8',
           visible: false,
-          lastAccess : 'oggi alle 15:46',
           messages:[
             {
               date:'02/11/2022',

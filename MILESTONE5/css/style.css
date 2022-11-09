@@ -41,6 +41,7 @@ main{
 .contact-col{
   height:100%;
   width:35%;
+  min-width:96px;
 }
 
 .chat-col{
@@ -66,12 +67,14 @@ main{
 .profile img{
   width:35px;
   height:35px;
+  display: block;
   object-fit: cover;
   max-width: 100%;
   border-radius: 50%;
 }
 .profile span{
- margin-left:10px;
+ margin-left:8px;
+ margin-right:10px;
  font-size:90%;
 }
 
@@ -173,7 +176,6 @@ li .circle{
   width:35px;
   height:35px;
   border-radius: 50%;
-  background-color: pink;
 }
 
 .last-msg{
@@ -208,9 +210,18 @@ li .circle{
   position: absolute;
   padding:10px;
   color: var(--mygrey);
+  font-size:70%;
+}
+
+.contact .time:first-of-type{
+  top:0;
+  right:30px;
+  margin-right:3px;
+}
+
+.contact .time:last-of-type{
   top:0;
   right:0;
-  font-size:70%;
 }
 
 .top-chat-row, .bottom-chat-row{
@@ -228,8 +239,9 @@ li .circle{
 
 .center-chat-bg{
   height: calc(100% - 100px);
-  padding:25px 65px 0;
+  padding:25px 45px 0;
   overflow-y: scroll;
+  overflow-x: hidden;
   background-image: url('../img/mine.jpg');
   background-repeat: repeat;
   display: flex;
@@ -273,7 +285,7 @@ li .circle{
   position: relative;
   padding: 15px;
   font-weight: 300;
-  margin: 10px 0;
+  margin: 8px 0;
 }
 
 .msg-option{
@@ -335,4 +347,107 @@ li .circle{
   right:8px;
   font-size:60%;
   color: var(--mydarkergrey);
+}
+
+
+/*++++++++++++++++ M-QUERIES ++++++++++++++*/
+@media screen and (max-width:1060px){
+  span.priority-4{
+    display:none;
+  }
+  .contact .time:first-of-type{
+    top:0;
+    right:0;
+    margin:0;
+  }
+}
+
+@media screen and (max-width:991px){
+  li .last-msg{
+    max-width:130px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  
+}
+@media screen and (max-width:950px) {
+  .contact span.time:first-of-type {
+    display:none;
+  }
+
+  div.message{
+    width:250px;
+  }
+
+  div.notifications{
+    max-width:100px;
+    text-overflow: ellipsis;
+  }
+  div.notifications a{
+    display:none;
+  }
+
+}
+
+@media screen and (max-width:850px) {
+  li .last-msg{
+    max-width:80px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}
+@media screen and (max-width:670px) {
+  div.lightblue-msg .priority-3, .last-access.priority-3, .contact-info .priority-2{
+    display:none;}
+
+  div.lightblue-msg{
+    display:flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  div.user-tools{
+    font-size:80%;
+  }
+
+  li .contact-info{
+    margin:0;
+  }
+  
+  ul>li.contact{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  ul>li .circle{
+    width:40px;
+    height:40px;
+  }
+
+  ul>li .circle img{
+    width:40px;
+    height:40px;
+  }
+
+  .chat-col .contact-info{
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    margin:0;
+  }
+}
+
+@media screen and (max-width:600px) {
+  div.user-tools{
+    display:none;
+  }
+
+  div.contact-col{
+    width:20%;
+  }
+
+  div.chat-col{
+    width:80%;
+  }
 }
