@@ -15,19 +15,22 @@ const app = createApp ({
               date:'07/11/2022',
               hour: '12:40',
               message:'Ciao Michele come stai?',
-              status:'sent'
+              status:'sent',
+              msgToggle:false
             },
             {
               date:'07/11/2022',
               hour: '12:41',
               message:'Ti saluta Chiara, è qui con me',
-              status:'sent'
+              status:'sent',
+              msgToggle:false
             },
             {
               date:'07/11/2022',
               hour: '12:43',
               message:'Ciao, tutto bene. Ricambia',
-              status:'received'
+              status:'received',
+              msgToggle:false
             },
           ]
         },
@@ -42,19 +45,22 @@ const app = createApp ({
               date:'06/11/2022',
               hour: '11:20',
               message:'Ciao tutto bene?',
-              status:'received'
+              status:'received',
+              msgToggle:false
             },
             {
               date:'06/11/2022',
               hour: '11:20',
               message:'Hai già finito il progetto in Vuejs?',
-              status:'received'
+              status:'received',
+              msgToggle:false
             },
             {
               date:'06/11/2022',
               hour: '11:53',
               message:'Ciao, no non ancora',
-              status:'sent'
+              status:'sent',
+              msgToggle:false
             }
           ]
         },
@@ -69,19 +75,22 @@ const app = createApp ({
               date:'05/11/2022',
               hour:'15:20',
               message:'Alessandro sei riuscito a visitare Paco?',
-              status:'sent'
+              status:'sent',
+              msgToggle:false
             },
             {
               date:'05/11/2022',
               hour: '15:30',
               message:'Ciao Sofia, sì l\'ho visitato e ora sta meglio',
-              status:'received'
+              status:'received',
+              msgToggle:false
             },
             {
               date:'05/11/2022',
               hour: '15:33',
               message:'Meno male, tra poco passo a prenderlo!',
-              status:'sent'
+              status:'sent',
+              msgToggle:false
             }
           ]
         },
@@ -96,19 +105,22 @@ const app = createApp ({
               date:'05/11/2022',
               hour: '13:20',
               message:'Ciao Sofia come stai?',
-              status:'received'
+              status:'received',
+              msgToggle:false
             },
             {
               date:'05/11/2022',
               hour: '13:23',
               message:'Come sta Paco?',
-              status:'received'
+              status:'received',
+              msgToggle:false
             },
             {
               date:'05/11/2022',
               hour: '13:56',
               message:'Ciao, fortunatamente meglio, grazie',
-              status:'sent'
+              status:'sent',
+              msgToggle:false
             }
           ]
         },
@@ -123,13 +135,15 @@ const app = createApp ({
               date:'04/11/2022',
               hour: '16:20',
               message:'Ciao Luigi, la macchina è pronta?',
-              status:'sent'
+              status:'sent',
+              msgToggle:false
             },
             {
               date:'04/11/2022',
               hour: '17:00',
               message:'Ciao, sì ho finito',
-              status:'received'
+              status:'received',
+              msgToggle:false
             }
           ]
         },
@@ -144,19 +158,22 @@ const app = createApp ({
               date:'03/11/2022',
               hour: '16:20',
               message:'Ciao, ci troviamo per una bevuta stasera verso le 19?',
-              status:'sent'
+              status:'sent',
+              msgToggle:false
             },
             {
               date:'03/11/2022',
               hour: '17:45',
               message:'Ciao, sì certo. Ci troviamo allo Zibaldone?',
-              status:'received'
+              status:'received',
+              msgToggle:false
             },
             {
               date:'03/11/2022',
               hour: '18:10',
               message:'Perfetto! A tra poco!',
-              status:'sent'
+              status:'sent',
+              msgToggle:false
             },
           ]
         },
@@ -171,19 +188,22 @@ const app = createApp ({
               date:'03/11/2022',
               hour: '15:40',
               message:'Ciao Samu ci sei per un aperitivo stasera?',
-              status:'sent'
+              status:'sent',
+              msgToggle:false
             },
             {
               date:'03/11/2022',
               hour: '15:40',
               message:'Siamo io e Serena',
-              status:'sent'
+              status:'sent',
+              msgToggle:false
             },
             {
               date:'03/11/2022',
               hour: '16:30',
               message:'Non riesco stasera!',
-              status:'received'
+              status:'received',
+              msgToggle:false
             },
           ]
         },
@@ -198,19 +218,22 @@ const app = createApp ({
               date:'02/11/2022',
               hour: '14:40',
               message:'Ciao Lino',
-              status:'sent'
+              status:'sent',
+              msgToggle:false
             },
             {
               date:'02/11/2022',
               hour: '14:42',
               message:'Cosa ne dici dell\'esercizio di oggi?',
-              status:'sent'
+              status:'sent',
+              msgToggle:false
             },
             {
               date:'02/11/2022',
               hour: '14:49',
               message:'Non so da dove iniziare!',
-              status:'received'
+              status:'received',
+              msgToggle:false
             },
           ]
         },
@@ -227,7 +250,6 @@ const app = createApp ({
       actualTime:'',
       myMessage: '',
       search:'',
-      filtered:[]
     }
   },
   methods:{
@@ -236,7 +258,6 @@ const app = createApp ({
       this.contacts.forEach(contact => {
        contact.visible = false;
       });
-      ;
       this.contacts[index].visible = true;
     },
     getDate(){
@@ -256,15 +277,12 @@ const app = createApp ({
     createNewMsg(){
       if(this.myMessage.length<1)return;
       this.getDate();
-      console.log(this.actualDate);
-      console.log(this.actualTime);
-      console.log(this.myMessage);
-      console.log(this.isActive);
       const newMessage = {
           date:this.actualDate,
           hour: this.actualTime,
           message:this.myMessage,
-          status:'sent'
+          status:'sent',
+          msgToggle:false
       }
       this.autoReply();
       this.isActive.messages.push(newMessage);
@@ -273,16 +291,29 @@ const app = createApp ({
     autoReply(){
       const reply  = setTimeout( () => {
         const rdmN=Math.floor(Math.random()*4);
-        console.log(rdmN);
         const newMessage = {
           date:this.actualDate,
           hour: this.actualTime,
           message:this.replies[rdmN],
-          status:'received'
+          status:'received',
+          msgToggle:false
         };
         this.isActive.messages.push(newMessage);
         this.myMessage='';        
       }, 1000 )
+    },
+    toggleClick: function(event){
+      this.isActive.messages.forEach( message => message.msgToggle= false);
+      const myIndex = event.path[1].getAttribute('custom-attr');
+      console.log(this.isActive.messages[myIndex].msgToggle);
+      if(this.isActive.messages[myIndex].msgToggle === false){
+        this.isActive.messages[myIndex].msgToggle = true;
+      }else{
+        this.isActive.messages[myIndex].msgToggle = false;
+      }
+    },
+    deleteMsg: function(event){
+      event.path[2].classList.add('d-none');
     },
   mounted(){
     console.log(this.contacts[0]);

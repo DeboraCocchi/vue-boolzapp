@@ -81,8 +81,15 @@
         </div>
 
         <div class="center-chat-bg" v-show="contact.visible">
-          <div v-for="message in contact.messages" class="message" :class="{'sent':message.status==='sent', 'received':message.status==='received'}">{{message.message}}
+          <div v-for="(message,index) in contact.messages" class="message" :class="{'sent':message.status==='sent', 'received':message.status==='received'}">{{message.message}}
             <span class="msg-hour">{{message.hour}}</span>
+            <span class="msg-option" @click="toggleClick" :custom-attr="index">
+              <i class="fa-solid fa-chevron-down"></i>
+            </span>
+            <div class="msg-tools-hidden" v-if="message.msgToggle">
+              <p>Message Info</p>
+              <p @click="deleteMsg">Delete message</p>
+            </div>
           </div>
         </div>
         <div class="bottom-chat-row">
