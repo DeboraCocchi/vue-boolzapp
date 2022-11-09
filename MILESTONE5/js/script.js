@@ -1,3 +1,19 @@
+/*bonus inseriti:
+- (milestone5): possibilità di cancellare il msg;
+- verifica che il messaggio da inviare contenga 1+ caratteri (no msg vuoti);
+- ricezione msg random dal bot;
+- scroll-y-proximity per visualizzare sempre l'ultimo msg della conversazione
+- differenziazione stringa ultimo accesso a seconda del tempo trascorso
+*/
+
+const DateTime=luxon.DateTime;
+const Interval = luxon.Interval;
+let now;
+function getTime(){
+  now = DateTime.now();
+  return now;
+}
+
 const {createApp} = Vue;
 
 const app = createApp ({
@@ -7,9 +23,8 @@ const app = createApp ({
         {
           name: 'Michele',
           avatar: '_1',
-          contained: false,
           visible: true,
-          lastAccess : 'oggi alle 12:00',
+          lastAccess : `${DateTime.now().setLocale('it').toRelativeCalendar()} alle `,
           messages:[
             {
               date:'07/11/2022',
@@ -38,7 +53,6 @@ const app = createApp ({
           name: 'Gianluca',
           avatar: '_2',
           visible: false,
-          contained: false,
           lastAccess : 'oggi alle 16:00',
           messages:[
             {
@@ -68,7 +82,6 @@ const app = createApp ({
           name: 'Alessandro VET',
           avatar: '_3',
           visible: false,
-          contained: false,
           lastAccess : 'ieri alle 11:00',
           messages:[
             {
@@ -98,7 +111,6 @@ const app = createApp ({
           name: 'Francesco',
           avatar: '_4',
           visible: false,
-          contained: false,
           lastAccess : 'oggi alle 17:00',
           messages:[
             {
@@ -128,7 +140,6 @@ const app = createApp ({
           name: 'Luigi Meccanico',
           avatar: '_5',
           visible: false,
-          contained: false,
           lastAccess : 'ieri alle 08:00',
           messages:[
             {
@@ -151,7 +162,6 @@ const app = createApp ({
           name: 'Serena',
           avatar: '_6',
           visible: false,
-          contained: false,
           lastAccess : 'oggi alle 09:18',
           messages:[
             {
@@ -181,7 +191,6 @@ const app = createApp ({
           name: 'Samuele',
           avatar: '_7',
           visible: false,
-          contained: false,
           lastAccess : 'domenica alle 20:12',
           messages:[
             {
@@ -211,7 +220,6 @@ const app = createApp ({
           name: 'Lino',
           avatar: '_8',
           visible: false,
-          contained: false,
           lastAccess : 'oggi alle 15:46',
           messages:[
             {
@@ -246,40 +254,26 @@ const app = createApp ({
         `A presto!`
       ],
       isActive:'',
-      actualDate:'',
-      actualTime:'',
       myMessage: '',
       search:'',
     }
   },
   methods:{
+    //funzione per visuallizzare una sola conversazione alla volta
     activeChat(index){
       this.isActive=this.contacts[index];
       this.contacts.forEach(contact => {
-       contact.visible = false;
-      });
+        contact.visible = false; });
       this.contacts[index].visible = true;
     },
-    getDate(){
-      const myDate = new Date();
-      let myHours=myDate.getHours();
-      if(myHours<10){myHours = '0'+myHours};
-      let myMinutes=myDate.getMinutes();
-      if(myMinutes<10){myMinutes = '0'+myMinutes};
-      this.actualTime = myHours+':'+myMinutes;
-      let myDay=myDate.getDate();
-      if(myDay<10){myDay = '0'+myDay};
-      let myMonth=myDate.getMonth()
-      if(myMonth<10){myMonth='0'+myMonth};
-      const myYear = myDate.getFullYear();
-      this.actualDate = `${myDay}/${myMonth+1}/${myYear}`; 
-    },
+    //funzione per creare il messaggio da inviare
     createNewMsg(){
+      //stringa 
       if(this.myMessage.length<1)return;
-      this.getDate();
+      getTime();
       const newMessage = {
-          date:this.actualDate,
-          hour: this.actualTime,
+          date:now.toFormat("dd'/'MM'/'yyyy"),
+          hour: now.toFormat('T'),
           message:this.myMessage,
           status:'sent',
           msgToggle:false
@@ -288,12 +282,14 @@ const app = createApp ({
       this.isActive.messages.push(newMessage);
       this.myMessage='';
     },
+    //funzione per la risposta automatica: f() di tipo setTimeout che sceglie una risposta random nell'array dedicato
     autoReply(){
       const reply  = setTimeout( () => {
-        const rdmN=Math.floor(Math.random()*4);
+        const rdmN = Math.floor(Math.random()*4);
+        getTime();
         const newMessage = {
-          date:this.actualDate,
-          hour: this.actualTime,
+          date:now.toFormat("dd'/'MM'/'yyyy"),
+          hour: now.toFormat('T'),
           message:this.replies[rdmN],
           status:'received',
           msgToggle:false
@@ -302,6 +298,7 @@ const app = createApp ({
         this.myMessage='';        
       }, 1000 )
     },
+    //funzione per visualizzare le opzioni del messaggio - toggle
     toggleClick: function(event){
       this.isActive.messages.forEach( message => message.msgToggle= false);
       const myIndex = event.path[1].getAttribute('custom-attr');
@@ -315,11 +312,34 @@ const app = createApp ({
     deleteMsg: function(event){
       event.path[2].classList.add('d-none');
     },
+    getLastAccessTime(contact, index){
+        return actualLastAccessTime = this.contacts[index].messages[contact.messages.length-1].hour;
+    },
+    getLastAccessDate(contact, index){
+      const actualLastAccessDate = this.contacts[index].messages[contact.messages.length-1].date;
+      //creo un array splittando i dati della data dell'ultimo msg
+      let newDate = this.contacts[index].messages[contact.messages.length-1].date.split("/");
+      //trasformo i dati per darli in pasto al metodo di luxon
+      const dateToCheckInterval = DateTime.local(parseInt(newDate[2]),parseInt(newDate[1]),parseInt(newDate[0]));
+      //richiamo getTime
+      getTime();
+      //verifico l'intervallo trascorso
+      const daysPassed = Interval.fromDateTimes(dateToCheckInterval, now);
+
+      //ritorno: a seconda dei giorni passati, cambia la stringa restituita
+      if(daysPassed.length('days')<1){
+        return `oggi`}
+      else if(daysPassed.length('days')<2){
+        return `ieri`}
+      else if(daysPassed.length('days')<5){
+        let roundedDays = Math.floor(daysPassed.length('days'))
+        return `${roundedDays} giorni fa`}
+      else{return `il giorno ${actualLastAccessDate}`}
+    },
   mounted(){
-    console.log(this.contacts[0]);
     this.isActive=this.contacts[0];
   }
 }}).mount('#app');
 
-
+//di default, la prima chat attiva sarà la 0 dell'array
 app.isActive = app.contacts[0];

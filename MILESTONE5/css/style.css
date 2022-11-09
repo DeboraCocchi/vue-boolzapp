@@ -55,7 +55,7 @@ main{
   display: flex;
   align-items: center;
   justify-content: space-between;
-  border-right: 1px solid var(--mygrey);
+  border-right: 1px solid rgb(218, 219, 218);
 }
 
 .profile{
@@ -108,7 +108,7 @@ main{
 
 .notifications{
   margin-left:10px;
-  font-size: 70%;
+  font-size: 80%;
 }
 
 .notifications a{
@@ -122,8 +122,8 @@ main{
   display: flex;
   align-items: center;
   justify-content: center;
-  padding:10px;
-  background-color: var(--mylightgrey);
+  padding:15px;
+  background-color: rgb(248, 248, 248);
 }
 
 .search-field span{
@@ -147,7 +147,7 @@ main{
 }
 
 .search-field input:focus{
-  outline:1px solid var(--mydarkgrey);
+  outline:1px solid var(--mylightblue);
 }
 
 ul{
@@ -319,11 +319,13 @@ li .circle{
 
 .sent{
   background-color: var(--mymsgsent);
+  margin-left:100px;
   align-self:end;
 }
 
 .received{
   background-color: white;
+  margin-right:100px;
   align-self:start;
 }
 
